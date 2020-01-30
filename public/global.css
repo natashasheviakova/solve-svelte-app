@@ -1,0 +1,395 @@
+@tailwind base;
+@tailwind utilities;
+
+:root {
+  --bg-color: #fff;
+  --header-bg-color: #1e1f2a;
+  --text-color: #373a3c;
+  --input-text-color: #495057;
+  --input-border-color: #becad6;
+  --border-color: #ddd;
+  --info-background-color: #bceff8;
+  --info-text-color: #1ea3ba;
+  --nav-active-color: #fff;
+  --nav-active-border-color: #6ddff5;
+  --tab-active-border-color: #777777;
+  --s-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+body {
+  color: theme('colors.text');
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  font-family: var(--s-font);
+}
+
+/* Text */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 300;
+}
+
+a,
+.link {
+  color: theme('colors.text');
+  text-decoration: none;
+}
+
+
+a:hover,
+a:active,
+a:focus {
+  text-decoration: none;
+}
+
+textarea {
+  resize: none;
+}
+
+textarea:focus, button:focus {
+  outline: none;
+}
+
+button[disabled] {
+  background-color: theme('colors.grey')!important;
+  cursor: progress;
+  opacity: 0.5;
+}
+
+#root {
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+/* Absolute position helpers */
+.pin-y-center {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.pin-x-center {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.pin-center {
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.pin-negative-b {
+  top: 100%;
+}
+
+/* Transitions. Add more as necessary */
+.transition {
+  transition-duration: 0.25s;
+  transition-property: all;
+}
+
+.transition-width {
+  transition-property: width;
+}
+
+/* Line height helpers - don't have this level of granularity with Tailwind, so
+   copying here. Maybe there's a better way? */
+.lh-16 {
+  line-height: 4rem;
+}
+
+/* Menu and tab navigation */
+.menu-item,
+.tab-item {
+  position: relative;
+}
+
+.modal-tab {
+  border-radius: 14px;
+  background: theme('colors.grey-dark');
+  opacity: 0.7;
+  color: theme('colors.white');
+}
+
+.modal-tab:hover {
+  opacity: 0.6;
+}
+
+.modal-tab.tab-item-active {
+  opacity: 1;
+  background: theme('colors.blue');
+}
+
+.modal-tab.tab-item-active:hover {
+  opacity: 1;
+  cursor: default;
+}
+
+.menu-item:hover::after,
+.menu-item-active::after,
+.page-tab.tab-item:hover::after,
+.page-tab.tab-item-active::after {
+  bottom: 0;
+  display: block;
+  content: '';
+  height: 4px;
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+.menu-item:hover::after,
+.menu-item-active::after {
+  background-color: theme('colors.teal-light');
+}
+
+.page-tab.tab-item:hover::after,
+.page-tab.tab-item-active::after {
+  background-color: theme('colors.grey-dark');
+}
+
+/* SVG helper classes. Note that Tailwind does have .stroke-current
+   which is meant to do a similar thing as the .current-stroke class below
+   but I've found it doesn't work as intended (probably user error *shrug* */
+.current-stroke line,
+.current-stroke rect,
+.current-stroke circle,
+.current-stroke path {
+  stroke: currentColor;
+}
+
+.current-fill line,
+.current-fill rect,
+.current-fill circle,
+.current-fill path {
+  fill: currentColor;
+}
+
+/* Fan-dangled loader. TODO: would be nice to remove the hard coded colour hexes for Tailwind config
+   values */
+.loader-box {
+  background: linear-gradient(90deg, #f2f2f2 25%, #e6e6e6 37%, #f2f2f2 63%);
+  background-size: 400% 100%;
+  animation: loading 1.4s ease infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+/* Triangles */
+.triangle-top-left::after,
+.triangle-top-center::after {
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #fff;
+  top: -5px;
+  content: '';
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.triangle-top-left::after {
+  left: 10px;
+}
+
+.triangle-top-center::after {
+  left: calc(50% - 5px);
+}
+
+.triangle-bottom-right::after,
+.triangle-bottom-center::after {
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #fff;
+  bottom: -5px;
+  content: '';
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.triangle-bottom-right::after {
+  right: 10px;
+}
+
+.triangle-bottom-center::after {
+  left: calc(50% - 5px);
+}
+
+.triangle-left-center:after, .triangle-left-center:before {
+	right: 100%;
+	top: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.triangle-left-center:after {
+	border-right-color: theme('colors.white');
+	border-width: 9px;
+	margin-top: -9px;
+}
+.triangle-left-center:before {
+	border-right-color: theme('colors.grey-light');
+	border-width: 10px;
+	margin-top: -10px;
+}
+
+.triangle-bottom-left:after, .triangle-bottom-left:before {
+	top: 100%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.triangle-bottom-left:after {
+	border-top-color: theme('colors.black-darker');
+	border-width: 9px;
+	right: 11px;
+}
+.triangle-bottom-left:before {
+	border-top-color: theme('colors.black-darker');
+	border-width: 10px;
+	right: 10px;
+}
+
+.triangle-top-right:after, .triangle-top-right:before {
+	bottom: 100%;
+	left: 80%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.triangle-top-right:after {
+	border-bottom-color: theme('colors.white');
+	border-width: 9px;
+	margin-left: -9px;
+}
+.triangle-top-right:before {
+	border-bottom-color: theme('colors.grey-light');
+	border-width: 10px;
+	margin-left: -10px;
+}
+
+/* Popover */
+.popover-bottom-right {
+  top: calc(100% + 4px); /* 4px (half beak height) */
+}
+
+.popover-top-right {
+  top: calc(0% - 52px); /* 44px(popover height) + 8px (beak height) */
+  right: 0;
+}
+
+.popover-center-right {
+  left: calc(100% + 12px); /* 12px (1.5 beak height) */
+  top: calc(0% - 12px);
+}
+
+/* web accessibility utilities */
+.hide-visually {
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
+}
+
+/**
+* Lock the scroll position by adding this class to the `<html>` element.
+*/
+.lock-scroll {
+  overflow: hidden !important;
+}
+
+/* CSS ICONS */
+
+/* close icon */
+.close {
+  width: 18px;
+  height:18px;
+  opacity: 0.8;
+}
+.close:hover {
+  opacity: 1;
+}
+.close:before, .close:after {
+  position: absolute;
+  content: ' ';
+  height: 20px;
+  width: 2px;
+  background-color: theme('colors.grey-dark');
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
+}
+
+/* SVG icons */
+.profile-sid .icon-copy {
+  fill: #6b6d6e;
+}
+
+
+/* Set width styling for the auth screens */
+.auth-container {
+  width: 320px;
+}
+
+
+.copyArea {
+  position: absolute;
+  left: -100%;
+}
+
+/* TABLES */
+.query-result-table tbody {
+  display: block;
+  overflow: auto;
+  height: 360px;
+  width: 100%;
+}
+
+
+/* ACE EDITOR */
+.ace_gutter-cell {
+  color: theme('colors.black-lighter');
+}
+.ace_layer.ace_gutter-layer {
+  background: theme('colors.black-darker');
+}
+.query-results-header td {
+  color: theme('colors.grey-lightest') !important;
+  border: 0!important;
+}
+.ace_comment {
+  color: theme('colors.teal-light') !important;
+}
