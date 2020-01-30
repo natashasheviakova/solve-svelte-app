@@ -23,11 +23,6 @@
 ];
 </script>
 
-<style>
-
-</style>
-
-
 <ul className={cn('reset-list my-0 x-5 p-0', className)}>
   {#each menuItems as menu}
     <li class='inline-block'>

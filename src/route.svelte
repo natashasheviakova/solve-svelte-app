@@ -9,9 +9,6 @@
   onDestroy(unsubscribe);
 </script>
 
-<style>
-</style>
-
 <div class="flex-grow w-full mx-auto mt-0 max-w-container px-6">
   <div class='my-3'>
     <svelte:component this={component} />

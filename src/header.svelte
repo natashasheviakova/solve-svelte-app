@@ -5,10 +5,6 @@
   import ProfileDropdown from './profileDropdown';
 </script>
 
-<style>
-
-</style>
-
 <header class='z-50 bg-black-darker px-6 items-center w-full flex flex-wrap shadow-md'>
   <div class='flex order-first flex-grow md:flex-grow-0 h-16'>
 
