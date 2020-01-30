@@ -19,5 +19,5 @@
   />
   </div>
   <Menu className='flex items-center flex-grow h-16 w-full md:w-auto order-last md:order-2' />
-  <!--   <ProfileDropdown className='flex-none items-center h-16 order-2 md:order-last' /> -->
+  <ProfileDropdown className='flex-none items-center h-16 order-2 md:order-last' />
 </header>

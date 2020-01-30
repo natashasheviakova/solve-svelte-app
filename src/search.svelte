@@ -9,11 +9,6 @@
 
  <div class={cn(className, 'self-center')}>
     <div class='relative'>
-    <!-- <img
-      src={searchIcon}
-      className='absolute left-0 ml-3 pin-y-center h-5 w-5'
-      alt='search'
-    /> -->
     <div class='search-icon absolute left-0 ml-3 pin-y-center mt-6 h-5 w-5'>
       <Icon data={search} width='20' height='20' viewBox='0 0 20 20' />
     </div>

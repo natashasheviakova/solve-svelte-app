@@ -18,6 +18,6 @@
   <div class='min-h-screen flex flex-col'>
     <Header />
     <Route />
-    <Footer>© Solve Data Inc.</Footer>
+    <Footer>© Solve Data Inc</Footer>
   </div>
 </div>

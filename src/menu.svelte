@@ -23,7 +23,7 @@
 ];
 </script>
 
-<ul className={cn('reset-list my-0 x-5 p-0', className)}>
+<ul class={cn('reset-list my-0 x-5 p-0', className)}>
   {#each menuItems as menu}
     <li class='inline-block'>
       <Link page={{path: menu.url, name: menu.text}} className='menu-item px-5 inline-block align-middle lh-16 relative text-greisher hover:text-white' />
